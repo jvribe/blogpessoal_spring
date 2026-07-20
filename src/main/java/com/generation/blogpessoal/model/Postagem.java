@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -18,6 +19,7 @@ import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "tb_postagens")
+@JsonPropertyOrder({ "id", "titulo", "texto", "data", "tema" })
 public class Postagem {
 
 	@Id
@@ -71,5 +73,12 @@ public class Postagem {
 
 	public void setData(LocalDateTime data) {
 		this.data = data;
+	}
+	public Tema getTema() {
+	    return tema;
+	}
+
+	public void setTema(Tema tema) {
+	    this.tema = tema;
 	}
 }
